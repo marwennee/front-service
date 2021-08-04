@@ -15,7 +15,6 @@ pipeline {
     stages {
 
         stage('Preparation') {
-            checkout scm
             sh "git rev-parse --short HEAD > .git/commit-id"
             VERSION = readFile('.git/commit-id').trim()
         }
