@@ -16,7 +16,7 @@ pipeline {
         stage('Preparation') {
           steps {
             sh "git rev-parse --short HEAD > .git/commit-id"
-            VERSION = readFile('.git/commit-id').trim()
+            sh "echo readFile('.git/commit-id').trim()"
           }
         }
 
