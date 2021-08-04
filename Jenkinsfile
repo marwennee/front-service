@@ -13,13 +13,6 @@ pipeline {
         }
     }
     stages {
-        stage('Preparation') {
-          steps {
-            sh "git rev-parse --short HEAD > .git/commit-id"
-            sh "echo readFile('.git/commit-id').trim()"
-          }
-        }
-
         stage('Docker Build') {
             when {
                 environment name: 'DEPLOY', value: 'true'
