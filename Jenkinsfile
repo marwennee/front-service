@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        DEPLOY = "${env.BRANCH_NAME == "master" || env.BRANCH_NAME == "develop" ? "true" : "false"}"
+        DEPLOY = "${env.BRANCH_NAME == "main" || env.BRANCH_NAME == "develop" ? "true" : "false"}"
         NAME = "deploy-front"
         VERSION = '2.0'
         REGISTRY = 'marwenguesmii/angular_nginx'
