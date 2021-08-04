@@ -13,10 +13,8 @@ pipeline {
         }
     }
     stages {
-
         stage('Preparation') {
-            sh "git rev-parse --short HEAD > .git/commit-id"
-            VERSION = readFile('.git/commit-id').trim()
+          sh "echo 'hello'"
         }
 
         stage('Docker Build') {
