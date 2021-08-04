@@ -1,0 +1,50 @@
+metadata:
+  name: sample-angular
+  namespace: testing
+    
+
+service:
+  name: angular-service
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+  protocol: TCP
+
+configmapData:
+  API_URL: http://elyadata-devops-back.com/api/tutorials
+  API_URL_1: http://elyadata-devops-back-1.com/api/tutorials
+
+image:
+    repository: marwenguesmii/angular_nginx
+    tag: ""
+    pullPolicy: Always
+
+spec:
+  replicasCout: 1
+  restartPolicy: OnFailure
+  containers:
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "200m"
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+
+ingress:
+  enabled: true
+  name: angular-ingress
+  className: ""
+  annotations: {}
+  hosts:
+  - elyadata-devops.com
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+
+
