@@ -9,18 +9,9 @@ metadata:
   labels:
     name: {{ .Values.ingress.name }}
 spec:
+{{ if .Values.ingress.rules }}
   rules:
-  {{- range .Values.ingress.hosts }}
-  {{- $url := splitList "/" . }}
-  - host: {{ first $url }}
-    http:
-      paths:
-      - pathType: Prefix
-        path: "/"
-        backend:
-          service:
-            name: {{ $serviceName }}
-            port:
-              number: {{ $port }}
-  {{- end}}
+{{ toYaml .Values.ingress.rules | indent 4 }} 
+{{ end}}
+
 {{- end}}

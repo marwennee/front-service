@@ -38,9 +38,16 @@ ingress:
   name: angular-ingress
   className: ""
   annotations: {}
-  hosts:
-  - elyadata-devops.com
-
+  rules:
+    - host: elyadata-devops.com
+      http:
+        paths:
+          - path: /
+            backend:
+              service:
+                name: angular-service
+                port:
+                  number: 80
 autoscaling:
   enabled: false
   minReplicas: 1
