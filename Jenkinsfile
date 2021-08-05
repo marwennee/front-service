@@ -17,7 +17,10 @@ pipeline {
             when {
                 environment name: 'DEPLOY', value: 'true'
             }
+            
             steps {
+              sh "echo 'hello'"
+              sh "git log --stat"
                 container('docker') {
                     sh "docker build -t ${REGISTRY}:${VERSION} ."
                 }
