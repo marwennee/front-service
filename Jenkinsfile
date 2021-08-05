@@ -1,7 +1,7 @@
 pipeline {
     environment {
         DEPLOY = "${env.BRANCH_NAME == "main" || env.BRANCH_NAME == "develop" ? "true" : "false"}"
-        NAME = "front-service"
+        NAME = "front-svc"
         VERSION = env.GIT_COMMIT.take(7)
         REGISTRY = 'marwenguesmii/angular_nginx'
         REGISTRY_CREDENTIAL = 'dockerhub'
