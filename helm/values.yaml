@@ -42,7 +42,8 @@ ingress:
     - host: elyadata-devops.com
       http:
         paths:
-          - path: /
+          - pathType: Prefix
+            path: /
             backend:
               service:
                 name: angular-service
